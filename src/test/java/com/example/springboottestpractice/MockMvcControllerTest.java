@@ -14,6 +14,7 @@ import reactor.core.publisher.Mono;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
@@ -37,6 +38,7 @@ class MockMvcControllerTest {
                 .contentType(MediaType.APPLICATION_JSON) // 꼭 있어야됨
                 .content(objectMapper.writeValueAsString(body)))
                 .andExpect(status().isOk())
+                .andExpect(content().string(String.valueOf(a + b)))
                 .andDo(print());
     }
 }

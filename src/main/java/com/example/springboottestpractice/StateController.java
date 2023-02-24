@@ -14,4 +14,9 @@ public class StateController {
     public String getPhaseName(){
         return PHASE;
     }
+
+    @GetMapping("/echo")
+    public String echo(String data){
+        return data;
+    }
 }
